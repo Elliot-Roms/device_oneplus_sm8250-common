@@ -13,7 +13,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <!-- Alert Slider -->
     <string name="slider_title">Schieberegler</string>
     <string name="mute_media_title">Stummschaltung der Medienlautstärke im Ruhemodus</string>
