@@ -32,6 +32,7 @@
 #define OP_FINISH_FP_ENROLL 10
 #define OP_DISPLAY_NOTIFY_PRESS 9
 #define OP_DISPLAY_SET_DIM 10
+#define OP_DISPLAY_AOD_MODE 8
 
 namespace android {
 namespace hardware {
@@ -113,10 +114,14 @@ Return<RequestStatus> BiometricsFingerprint::ErrorFilter(int32_t error) {
 }
 
 Return<void> BiometricsFingerprint::onHideUdfpsOverlay() {
+    mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
+    mVendorDisplayService->setMode(OP_DISPLAY_AOD_MODE, 0);
+    mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
     return Void();
 }
 
 Return<void> BiometricsFingerprint::onShowUdfpsOverlay() {
+    this->mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 1);
     return Void();
 }
 
