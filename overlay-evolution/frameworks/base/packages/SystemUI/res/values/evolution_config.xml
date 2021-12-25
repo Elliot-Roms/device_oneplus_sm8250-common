@@ -29,5 +29,8 @@
             1 - LOCAL HBM
     -->
     <integer name="config_udfps_hbm_type">0</integer>
+	
+	 <!-- Burn-in protection -->
+    <integer name="config_shift_interval">40</integer>
 
 </resources>
