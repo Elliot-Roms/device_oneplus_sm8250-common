@@ -59,9 +59,9 @@ public class KeyHandler implements DeviceKeyHandler {
         return false;
     }
 
-    public KeyEvent handleKeyEvent(KeyEvent event) {
+    public boolean handleKeyEvent(KeyEvent event) {
         if (event.getAction() != KeyEvent.ACTION_DOWN) {
-            return event;
+            return false;
         }
 
         int scanCode = event.getScanCode();
@@ -84,10 +84,10 @@ public class KeyHandler implements DeviceKeyHandler {
                 VolumeService.changeMediaVolume(mAudioManager, mContext);
                 break;
             default:
-                return event;
+                return false;
         }
 
-        return null;
+        return true;
     }
 
     private void doHapticFeedback(VibrationEffect effect) {
