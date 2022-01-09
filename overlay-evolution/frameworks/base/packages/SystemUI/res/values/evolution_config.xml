@@ -30,7 +30,7 @@
     -->
     <integer name="config_udfps_hbm_type">0</integer>
     
-    <!-- Whether device has hardware alertslider -->
-    <bool name="config_hasAlertSlider">true</bool>
+    <!-- Udfps vendor code -->
+    <integer name="config_udfps_vendor_code">0</integer>
 
 </resources>
