@@ -55,4 +55,7 @@
     
     <!-- Specify custom blanking delay of the display -->
     <integer name="config_screen_off_delay">0</integer>
+
+    <!-- Whether device has hardware alertslider -->
+    <bool name="config_hasAlertSlider">true</bool>
 </resources>
