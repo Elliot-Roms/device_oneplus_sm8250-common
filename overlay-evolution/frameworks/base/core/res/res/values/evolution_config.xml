@@ -77,7 +77,4 @@
          0: Left side
          1: Right side -->
     <integer name="config_alertSliderLocation">1</integer>
-    
-    <!-- Default FOD pressed color -->
-    <integer name="config_fod_pressed_color">1</integer>
 </resources>
