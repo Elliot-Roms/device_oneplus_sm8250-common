@@ -17,8 +17,15 @@
 */
 package org.aosp.device.DeviceSettings;
 
+import android.content.res.Resources;
+import android.util.Log;
+
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.UserHandle;
 
 import java.io.File;
@@ -30,6 +37,7 @@ import java.io.FileReader;
 
 public class Utils {
 
+    private static final String TAG = Utils.class.getSimpleName();
     private static boolean mServiceEnabled = false;
 
     private static void startService(Context context) {
@@ -130,4 +138,26 @@ public class Utils {
         }
         return defValue;
     }
+    
+    public static boolean isAppInstalled(Context context, String appUri) {
+        try {
+            PackageManager pm = context.getPackageManager();
+            pm.getPackageInfo(appUri, PackageManager.GET_ACTIVITIES);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    public static boolean isAvailableApp(String packageName, Context context) {
+        Context mContext = context;
+        final PackageManager pm = mContext.getPackageManager();
+        try {
+            pm.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES);
+            int enabled = pm.getApplicationEnabledSetting(packageName);
+            return enabled != PackageManager.COMPONENT_ENABLED_STATE_DISABLED &&
+                enabled != PackageManager.COMPONENT_ENABLED_STATE_DISABLED_USER;
+        } catch (NameNotFoundException e) {
+            return false;
+        }
 }
