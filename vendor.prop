@@ -113,10 +113,8 @@ ro.vendor.bluetooth.wipower=false
 vendor.qcom.bluetooth.soc=hastings
 
 # Camera
-persist.vendor.camera.privapp.list=com.oneplus.camera,com.oem.autotest,com.oneplus.factorymode
 vendor.arcsoft.sn_isHardCopy=0
 vendor.camera.algo.jpeghwencode=1
-vendor.camera.aux.packagelist=com.oem.autotest,com.oneplus.factorymode,com.oneplus.camera,com.oneplus.healthcheck
 
 # Crypto
 ro.crypto.allow_encrypt_override=true
@@ -169,7 +167,6 @@ debug.sf.high_fps_early_phase_offset_ns=-4000000
 debug.sf.high_fps_late_app_phase_offset_ns=1000000
 debug.sf.high_fps_late_sf_phase_offset_ns=-4000000
 debug.sf.hw=0
-debug.sf.latch_unsignaled=1
 persist.sys.sf.color_mode=0
 persist.sys.sf.color_saturation=1.0
 persist.sys.sf.native_mode=1
