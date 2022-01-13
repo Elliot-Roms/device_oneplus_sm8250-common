@@ -31,7 +31,7 @@
     <string name="auto_hbm_threshold_summary">Dostosuj szczytową luminancję wyświetlacza </string>
     <string name="tile_hbm_mode">Wysoka jasność</string>
     <string name="dc_mode_summary">Przyciemnij podświetlenie ekranu poprzez zmianę obwodu mocy ekranu</string>
-    <string name="dc_mode_title">Przyciemnianie DC</string>
+    <string name="dc_mode_title">Automatyczne przyciemnianie DC</string>
     <!-- Dolby -->
     <string name="dolby_category">Dolby</string>
     <string name="enable_dolby_title">Dolby Atmos</string>
@@ -77,6 +77,10 @@
     <string name="fps_info_position_bottom_center">Bottom center</string>
     <string name="fps_info_position_bottom_right">Bottom right</string>
     <string name="fps_info_text_size_title">Rozmiar czcionki</string>
+    <!-- Log Tile -->
+    <string name="quick_settings_log_tile_label">Kafelek dziennika</string>
+    <string name="quick_settings_log_tile_dialog_title">Opcje</string>
+    <string name="cannot_get_su">Akcja nie powiodła się z powodu braku dostępu do superużytkownika (root)</string>
     <!-- Touchpanel -->
     <string name="touchpanel_title">Touchpanel</string>
     <string name="game_mode_title">Tryb gry</string>

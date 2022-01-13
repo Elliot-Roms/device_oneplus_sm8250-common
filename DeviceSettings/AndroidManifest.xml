@@ -17,9 +17,9 @@
 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           android:sharedUserId="android.uid.system"
-          package="org.aosp.device.DeviceSettings"
-          android:versionCode="2"
-          android:versionName="2.0" >
+          package="org.evolution.device.DeviceSettings"
+          android:versionCode="1"
+          android:versionName="1.0" >
 
     <uses-permission android:name="android.permission.INJECT_EVENTS"/>
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
@@ -35,23 +35,24 @@
         android:targetSdkVersion="29" />
 
     <application
-        android:defaultToDeviceProtectedStorage="true"
-        android:directBootAware="true"
         android:icon="@drawable/ic_settings_device"
         android:label="@string/device_title"
-        android:theme="@style/Theme.SubSettingsBase">
+        android:theme="@style/Theme.SubSettingsBase"
+        android:defaultToDeviceProtectedStorage="true"
+        android:directBootAware="true">
 
-        <!-- DC-Dimming Tile -->
-        <service
-            android:name=".DCModeTileService"
-            android:icon="@drawable/ic_dc_mode"
-            android:label="@string/dc_mode_title"
-            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
-            <intent-filter>
-                <action
-                    android:name="android.service.quicksettings.action.QS_TILE"/>
+        <receiver 
+            android:name=".Startup" 
+            android:defaultToDeviceProtectedStorage="true"
+            android:directBootAware="true"
+            android:enabled="true">
+            <intent-filter android:priority="100" >
+                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
             </intent-filter>
-        </service>
+        </receiver>
+
+        <activity android:name=".DeviceSettings" />
+        <activity android:name=".KeyHandler" />
 
         <!-- DeviceSettings Activity -->
         <activity
@@ -70,22 +71,9 @@
                 android:resource="@string/device_summary" />
         </activity>
 
-        <activity android:name=".DeviceSettings" />
-        <activity android:name=".KeyHandler" />
-
-        <receiver 
-            android:name="org.aosp.device.DeviceSettings.Startup" 
-            android:defaultToDeviceProtectedStorage="true"
-            android:directBootAware="true"
-            android:enabled="true">
-            <intent-filter android:priority="100" >
-                <action android:name="android.intent.action.LOCKED_BOOT_COMPLETED" />
-            </intent-filter>
-        </receiver>
-
-        <!-- DeviceSettings Tile -->
+        <!-- DeviceSettings Tile Service -->
         <service
-            android:name="org.aosp.device.DeviceSettings.DeviceSettingsTileService"
+            android:name=".Services.DeviceSettingsTileService"
             android:icon="@drawable/ic_settings_device_qs"
             android:label="@string/device_title"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
@@ -95,9 +83,21 @@
             </intent-filter>
         </service>
 
-        <!-- Dolby Tile -->
+        <!-- DC-Dimming Tile -->
         <service
-            android:name="org.aosp.device.DeviceSettings.DolbyTileService"
+            android:name=".Services.DCModeTileService"
+            android:icon="@drawable/ic_dimming_off"
+            android:label="@string/tile_dc_mode"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
+            <intent-filter>
+                <action
+                    android:name="android.service.quicksettings.action.QS_TILE"/>
+            </intent-filter>
+        </service>
+
+        <!-- Dolby Tile Service -->
+        <service
+            android:name=".Services.DolbyTileService"
             android:icon="@drawable/ic_dolby"
             android:label="@string/enable_dolby_title"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
@@ -109,7 +109,7 @@
 
         <!-- DozeSettings Activity -->
         <activity
-            android:name="org.aosp.device.DeviceSettings.doze.DozeSettingsActivity"
+            android:name=".Doze.DozeSettingsActivity"
             android:exported="true"
             android:label="@string/ambient_display_title"
             android:launchMode="singleTask" >
@@ -120,13 +120,13 @@
         </activity>
 
         <!-- Doze Service -->
-		<service android:name="org.aosp.device.DeviceSettings.doze.DozeService"
+		<service android:name=".Doze.DozeService"
                  android:permission="OneplusDozeService">
         </service>
 
-        <!-- DozeSettings Tile -->
+        <!-- DozeSettings Tile Service -->
          <service
-            android:name="org.aosp.device.DeviceSettings.doze.DozeTileService"
+            android:name=".Doze.DozeTileService"
             android:icon="@drawable/ic_eye"
             android:label="@string/ambient_display_gestures_title"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
@@ -136,13 +136,9 @@
             </intent-filter>
         </service>
 
-        <!-- HBM Service -->
-        <service android:name="org.aosp.device.DeviceSettings.HBMModeService"
-                 android:exported="false" />
-
-        <!-- HBM Tile -->
+        <!-- HBM Tile Service -->
         <service
-            android:name="org.aosp.device.DeviceSettings.HBMModeTileService"
+            android:name=".Services.HBMModeTileService"
             android:icon="@drawable/ic_hbm_mode"
             android:label="@string/tile_hbm_mode"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
@@ -153,21 +149,21 @@
         </service>
 
         <!-- HBM Service -->
-        <service android:name="org.aosp.device.DeviceSettings.HBMModeService"
+        <service android:name=".Services.HBMModeService"
             android:exported="false" />
 
         <!-- Auto HBM Service -->
-        <service android:name="org.aosp.device.DeviceSettings.AutoHBMService"
+        <service android:name=".Services.AutoHBMService"
 		 android:exported="false" />
 
         <!-- FPS Info Service -->
-        <service android:name="org.aosp.device.DeviceSettings.FPSInfoService"
+        <service android:name=".Services.FPSInfoService"
                 android:exported="false">
         </service>
 
-        <!-- FPS Tile -->
+        <!-- FPS Tile Service -->
         <service
-            android:name=".FPSTileService"
+            android:name=".Services.FPSTileService"
             android:icon="@drawable/ic_fps_overlay"
             android:label="@string/fps_info_title"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
@@ -177,9 +173,9 @@
             </intent-filter>
         </service>
 
-        <!-- Game Mode Tile -->
+        <!-- Game Mode Tile Service -->
         <service
-            android:name="org.aosp.device.DeviceSettings.GameModeTileService"
+            android:name=".Services.GameModeTileService"
             android:icon="@drawable/ic_game_mode"
             android:label="@string/game_mode_title"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
@@ -189,11 +185,11 @@
             </intent-filter>
         </service>
 
-        <!-- Edge Touch Tile -->
+        <!-- Log Tile Service -->
         <service
-            android:name="org.aosp.device.DeviceSettings.EdgeTouchTileService"
-            android:icon="@drawable/ic_edge_touch"
-            android:label="@string/edge_touch_title"
+            android:name=".Services.LogTileService"
+            android:icon="@drawable/ic_logtile"
+            android:label="@string/quick_settings_log_tile_label"
             android:permission="android.permission.BIND_QUICK_SETTINGS_TILE">
             <intent-filter>
                 <action
@@ -204,13 +200,14 @@
         <!-- Search Indexing -->
         <provider
             android:name=".ConfigPanelSearchIndexablesProvider"
-            android:authorities="org.aosp.device"
+            android:authorities="org.evolution.device"
             android:multiprocess="false"
             android:grantUriPermissions="true"
             android:permission="android.permission.READ_SEARCH_INDEXABLES"
             android:exported="true">
             <intent-filter>
-                <action android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER" />
+                <action 
+                    android:name="android.content.action.SEARCH_INDEXABLES_PROVIDER" />
             </intent-filter>
         </provider>
     </application>

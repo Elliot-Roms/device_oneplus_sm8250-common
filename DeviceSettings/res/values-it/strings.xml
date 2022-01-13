@@ -31,7 +31,7 @@
     <string name="auto_hbm_threshold_summary">Regola il picco della luminanza del display </string>
     <string name="tile_hbm_mode">Alta luminosità</string>
     <string name="dc_mode_summary">Diminuisci la retroilluminazione regolando la corrente CC disegnata sul display</string>
-    <string name="dc_mode_title">DC Dimming</string>
+    <string name="dc_mode_title">DC Dimming automatico</string>
     <!-- Dolby -->
     <string name="dolby_category">Dolby</string>
     <string name="enable_dolby_title">Dolby Atmos</string>
@@ -77,6 +77,10 @@
     <string name="fps_info_position_bottom_center">Bottom center</string>
     <string name="fps_info_position_bottom_right">Bottom right</string>
     <string name="fps_info_text_size_title">Dimensione del testo</string>
+    <!-- Log Tile -->
+    <string name="quick_settings_log_tile_label">LogTile</string>
+    <string name="quick_settings_log_tile_dialog_title">Opzioni</string>
+    <string name="cannot_get_su">Azione fallita a causa di un accesso superuser(root) mancante</string>
     <!-- Touchpanel -->
     <string name="touchpanel_title">Pannello touch</string>
     <string name="game_mode_title">Modalità di gioco</string>
