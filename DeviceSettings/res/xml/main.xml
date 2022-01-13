@@ -14,49 +14,44 @@
      limitations under the License.
 -->
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:settings="http://schemas.android.com/apk/res/org.evolution.device.DeviceSettings"
+	xmlns:settings="http://schemas.android.com/apk/res/org.aosp.device.DeviceSettings"
 	android.title="@string/device_title">
 
     <PreferenceCategory
         android:key="slider"
         android:title="@string/slider_title">
 
-        <org.evolution.device.DeviceSettings.Preference.SwitchPreference
+        <org.aosp.device.DeviceSettings.SwitchPreference
             android:key="mute_media"
             android:icon="@drawable/ic_audio_media"
             android:title="@string/mute_media_title"
             android:summary="@string/mute_media_summary"
             android:persistent="true" />
-
-        <Preference
-            android:icon="@drawable/ic_info_outline"
-            android:summary="@string/mute_media_warning"
-            android:persistent="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="graphics"
         android:title="@string/display_title">
 
-        <org.evolution.device.DeviceSettings.Preference.SwitchPreference
+        <org.aosp.device.DeviceSettings.SwitchPreference
+            android:key="dc_dim"
+            android:icon="@drawable/ic_dc_mode"
+            android:summary="@string/dc_mode_summary"
+            android:title="@string/dc_mode_title" />
+
+        <org.aosp.device.DeviceSettings.SwitchPreference
             android:key="auto_hbm"
             android:icon="@drawable/ic_autohbm_mode"
             android:summary="@string/auto_hbm_summary"
             android:title="@string/auto_hbm_title" />
 
-        <org.evolution.device.DeviceSettings.Preference.AutoHBMThresholdPreference
+        <org.aosp.device.DeviceSettings.AutoHBMThresholdPreference
             android:key="auto_hbm_threshold"
             android:icon="@drawable/ic_autohbm_threshold"
             android:title="@string/auto_hbm_threshold_title"
             android:summary="@string/auto_hbm_threshold_summary" />
 
-       <org.evolution.device.DeviceSettings.Preference.SwitchPreference
-            android:key="dc"
-            android:icon="@drawable/ic_dc_mode"
-            android:summary="@string/dc_mode_summary"
-            android:title="@string/dc_mode_title" />
-
-       <org.evolution.device.DeviceSettings.Preference.SwitchPreference
+        <org.aosp.device.DeviceSettings.SwitchPreference
             android:key="hbm"
             android:icon="@drawable/ic_hbm_mode"
             android:summary="@string/hbm_mode_summary"
@@ -68,7 +63,7 @@
         android:key="dolby"
         android:title="@string/dolby_category">
 
-        <org.evolution.device.DeviceSettings.Preference.SwitchPreference
+        <org.aosp.device.DeviceSettings.SwitchPreference
             android:key="enable_dolby_atmos"
             android:summary="@string/enable_dolby_summary"
             android:title="@string/enable_dolby_title"
@@ -100,7 +95,7 @@
             android:summary="@string/ambient_display_gestures_summary"
             android:persistent="false" >
             <intent android:action="android.intent.action.MAIN"
-                    android:targetClass="org.evolution.device.DeviceSettings.Doze.DozeSettingsActivity" />
+                    android:targetClass="org.aosp.device.DeviceSettings.doze.DozeSettingsActivity" />
         </Preference>
     </PreferenceCategory>
 
@@ -108,7 +103,7 @@
         android:key="fps"
         android:title="@string/fps_title">
 		
-        <org.evolution.device.DeviceSettings.Preference.SwitchPreference
+        <org.aosp.device.DeviceSettings.SwitchPreference
             android:key="fps_info"
             android:icon="@drawable/ic_fps_overlay"
             android:title="@string/fps_info_title"
@@ -133,7 +128,7 @@
             android:entries="@array/fps_info_color_entries"
             android:entryValues="@array/fps_info_color_values" />
 
-        <org.evolution.device.DeviceSettings.Preference.CustomSeekBarPreference
+        <org.aosp.device.DeviceSettings.CustomSeekBarPreference
             android:key="fps_info_text_size"
             android:icon="@drawable/ic_fps_text"
             android:title="@string/fps_info_text_size_title"
@@ -184,7 +179,7 @@
         android:key="touchpanel"
         android:title="@string/touchpanel_title">
 
-        <org.evolution.device.DeviceSettings.Preference.SwitchPreference
+        <org.aosp.device.DeviceSettings.SwitchPreference
             android:key="game_mode"
             android:icon="@drawable/ic_game_mode"
             android:summary="@string/game_mode_summary"
@@ -194,13 +189,24 @@
             android:icon="@drawable/ic_info_outline"
             android:summary="@string/game_mode_warning" 
             android:persistent="false" />
+
+        <org.aosp.device.DeviceSettings.SwitchPreference
+            android:key="edge_touch"
+            android:icon="@drawable/ic_edge_touch"
+            android:summary="@string/edge_touch_summary"
+            android:title="@string/edge_touch_title" />
+
+        <Preference
+            android:icon="@drawable/ic_info_outline"
+            android:summary="@string/edge_touch_warning" 
+            android:persistent="false" />
     </PreferenceCategory>
 
     <PreferenceCategory
         android:key="vibrator"
         android:title="@string/category_vibrator">
 
-        <org.evolution.device.DeviceSettings.Preference.VibratorStrengthPreference
+        <org.aosp.device.DeviceSettings.VibratorStrengthPreference
             android:key="vib_strength"
             android:icon="@drawable/ic_vibration"
             android:title="@string/vib_strength_title_head"

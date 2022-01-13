@@ -31,7 +31,7 @@
     <string name="auto_hbm_threshold_summary">Настройка пиковой яркости дисплея </string>
     <string name="tile_hbm_mode">Высокая яркость</string>
     <string name="dc_mode_summary">Затемнение подсветки путем регулирования постоянного тока на дисплее</string>
-    <string name="dc_mode_title">Автоматический DC Dimming</string>
+    <string name="dc_mode_title">DC Dimming</string>
     <!-- Dolby -->
     <string name="dolby_category">Dolby</string>
     <string name="enable_dolby_title">Dolby Atmos</string>
@@ -77,10 +77,6 @@
     <string name="fps_info_position_bottom_center">Bottom center</string>
     <string name="fps_info_position_bottom_right">Bottom right</string>
     <string name="fps_info_text_size_title">Размер текста</string>
-    <!-- Log Tile -->
-    <string name="quick_settings_log_tile_label">LogTile</string>
-    <string name="quick_settings_log_tile_dialog_title">Настройки</string>
-    <string name="cannot_get_su">Не удалось выполнить из-за отсутствия прав суперпользователя (root)</string>
     <!-- Touchpanel -->
     <string name="touchpanel_title">Touchpanel</string>
     <string name="game_mode_title">Игровой режим</string>

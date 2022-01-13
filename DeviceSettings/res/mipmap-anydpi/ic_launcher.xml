@@ -17,3 +17,4 @@
     <background android:drawable="@mipmap/ic_background"/>
     <foreground android:drawable="@mipmap/ic_foreground"/>
 </adaptive-icon>
+
