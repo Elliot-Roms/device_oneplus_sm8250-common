@@ -23,12 +23,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/gsi_keys.mk)
 # Get non-open-source specific aspects
 $(call inherit-product, vendor/oneplus/sm8250-common/sm8250-common-vendor.mk)
 
-# OnePlus Camera
-$(call inherit-product-if-exists, vendor/oneplus/opcamera/opcamera-vendor.mk)
-
-# Include new Interfaces makefile
-$(call inherit-product, $(LOCAL_PATH)/interfaces.mk)
-
 # Additional native libraries
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/public.libraries.txt:$(TARGET_COPY_OUT_VENDOR)/etc/public.libraries.txt
@@ -193,8 +187,7 @@ PRODUCT_PACKAGES_DEBUG += \
 PRODUCT_PACKAGES += \
     android.hardware.camera.provider@2.4-impl \
     android.hardware.camera.provider@2.4-service_64 \
-    libcamera2ndk_vendor \
-    vendor.oneplus.hardware.camera@1.0 \
+    Snap \
     vendor.qti.hardware.camera.postproc@1.0.vendor
 
 # Common init scripts
@@ -209,7 +202,6 @@ PRODUCT_PACKAGES += \
     init.color.rc \
     init.oem.sec.rc \
     init.oem_ftm.rc \
-    init.opcamera.rc \
     init.oplus_chg.sh \
     init.qcom.class_core.sh \
     init.qcom.coex.sh \
@@ -309,9 +301,6 @@ PRODUCT_PACKAGES += \
 
 # HIDL
 PRODUCT_PACKAGES += \
-    libhidltransport \
-    libhidltransport.vendor \
-    libhwbinder \
     libhwbinder.vendor
 
 # HotwordEnrollement app permissions
@@ -386,12 +375,6 @@ PRODUCT_PACKAGES += \
     libOmxVenc \
     libstagefrighthw
 
-# OnePlus Apps
-PRODUCT_PACKAGES += \
-    OPSoundTunerOverlay \
-    OnePlusCameraOverlay \
-    OnePlusGalleryOverlay
-
 # Power
 PRODUCT_PACKAGES += \
     android.hardware.power-service \
@@ -422,7 +405,8 @@ PRODUCT_PACKAGES += \
 
 # Soong namespaces
 PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
+    $(LOCAL_PATH) \
+    device/oneplus/common
 
 # Telephony
 PRODUCT_PACKAGES += \
