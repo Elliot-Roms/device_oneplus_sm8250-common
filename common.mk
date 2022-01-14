@@ -374,6 +374,10 @@ PRODUCT_PACKAGES += \
     libOmxVdec \
     libOmxVenc \
     libstagefrighthw
+	
+# OnePlus Apps
+PRODUCT_PACKAGES += \
+    OPSoundTunerOverlay
 
 # Power
 PRODUCT_PACKAGES += \
