@@ -15,6 +15,7 @@
  */
 
 #include <compositionengine/UdfpsExtension.h>
+#include <vendor/oneplus/hardware/display/1.0/IOneplusDisplay.h>
 
 uint32_t getUdfpsZOrder(uint32_t z, bool touched) {
     return touched ? 0xfc8 : z;
