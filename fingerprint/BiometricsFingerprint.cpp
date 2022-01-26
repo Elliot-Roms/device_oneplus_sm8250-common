@@ -110,6 +110,16 @@ Return<void> BiometricsFingerprint::onFingerUp() {
     return Void();
 }
 
+Return<void> BiometricsFingerprint::onHideUdfpsOverlay() {
+    isCancelled = 0;
+    mVendorDisplayService->setMode(OP_DISPLAY_NOTIFY_PRESS, 0);
+    return Void();
+}
+
+Return<void> BiometricsFingerprint::onShowUdfpsOverlay() {
+    return Void();
+}
+
 Return<RequestStatus> BiometricsFingerprint::ErrorFilter(int32_t error) {
     switch(error) {
         case 0: return RequestStatus::SYS_OK;
