@@ -33,4 +33,6 @@
     <!-- Udfps vendor code -->
     <integer name="config_udfps_vendor_code">0</integer>
 
+    <!-- Whether to pulse onFingerDown actions while in AOD. -->
+    <bool name="config_pulseOnFingerDownInAod">true</bool>
 </resources>
