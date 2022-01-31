@@ -275,7 +275,7 @@ Return<RequestStatus> BiometricsFingerprint::authenticate(uint64_t operationId,
     set(POWER_STATUS_PATH, 1);
     set(CANCEL_STATUS_PATH, 0);
     if (isCancelled)
-        mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 1);
+        mVendorDisplayService->setMode(OP_DISPLAY_SET_DIM, 0);
     else
         set(AUTH_STATUS_PATH, 1);
     mVendorFpService->updateStatus(OP_ENABLE_FP_LONGPRESS);
